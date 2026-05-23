@@ -14,6 +14,20 @@
   --border-subtle: rgba(159, 204, 62, 0.2);
 }
 
+[data-theme="light"] {
+  --background: #f8f8f8;
+  --foreground: #444444;
+  --brand: #7ab82a;
+  --brand-hover: #d8673d;
+  --brand-glow: rgba(122, 184, 42, 0.12);
+  --brand-light: #9fcc3e;
+  --brand-pale: rgba(122, 184, 42, 0.08);
+  --ink-dark: #1a1a1a;
+  --surface: #ffffff;
+  --surface-elevated: #f0f0f0;
+  --border-subtle: rgba(0, 0, 0, 0.1);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -38,6 +52,53 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-lato), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* In light mode, override hardcoded text-white classes */
+[data-theme="light"] .text-white {
+  color: var(--ink-dark) !important;
+}
+
+[data-theme="light"] .text-white\/80 {
+  color: rgba(26, 26, 26, 0.8) !important;
+}
+
+[data-theme="light"] .text-white\/70 {
+  color: rgba(26, 26, 26, 0.7) !important;
+}
+
+[data-theme="light"] .text-white\/60 {
+  color: rgba(26, 26, 26, 0.6) !important;
+}
+
+[data-theme="light"] .text-white\/40 {
+  color: rgba(26, 26, 26, 0.4) !important;
+}
+
+/* Light mode: keep hero/header dark since they have image backgrounds */
+[data-theme="light"] .text-3d {
+  text-shadow:
+    0 1px 0 rgba(122, 184, 42, 0.3),
+    0 2px 0 rgba(122, 184, 42, 0.2),
+    0 3px 0 rgba(122, 184, 42, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Light mode gradient text adjustment */
+[data-theme="light"] .text-gradient-brand {
+  background: linear-gradient(135deg, #7ab82a 0%, #1a1a1a 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Light mode glow adjustments */
+[data-theme="light"] .glow-green {
+  box-shadow: 0 0 30px rgba(122, 184, 42, 0.08);
+}
+
+[data-theme="light"] .glow-green-hover:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 ::selection {

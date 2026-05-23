@@ -8,6 +8,7 @@ import { site } from "@/lib/content/site";
 import { cn } from "@/lib/utils/cn";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navLinks = [
   { href: "/#pillars", label: "Services" },
@@ -60,6 +61,7 @@ export function Header({ transparent = false }: HeaderProps) {
               {link.label}
             </Link>
           ))}
+          <ThemeToggle />
           <Button href="/get-started" size="sm">
             Free Consultation
           </Button>
@@ -117,6 +119,10 @@ export function Header({ transparent = false }: HeaderProps) {
               {link.label}
             </Link>
           ))}
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <span className="text-sm text-white/60">Theme</span>
+          </div>
           <Button href="/get-started" className="w-full">
             Free Consultation
           </Button>
