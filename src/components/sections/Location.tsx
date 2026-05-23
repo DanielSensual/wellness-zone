@@ -23,14 +23,14 @@ export function Location() {
           subtitle="Winter Park, Florida"
         />
 
-        <div className="mb-12 overflow-hidden rounded-2xl border border-brand/20 bg-surface-elevated glow-green">
+        <div className="mb-12 overflow-hidden rounded-2xl glass-section">
           <ul className="grid grid-cols-2 divide-x divide-brand/10 sm:grid-cols-4">
             {stats.map((stat) => (
               <li
                 key={stat.label}
                 className="flex flex-col items-center justify-center px-4 py-6 text-center sm:py-8"
               >
-                <span className="font-display text-3xl font-bold text-brand sm:text-4xl">
+                <span className="font-display text-3d-subtle text-3xl font-bold text-brand sm:text-4xl">
                   {stat.value}
                 </span>
                 <span className="mt-2 text-xs uppercase tracking-[0.2em] text-white/60 sm:text-sm">

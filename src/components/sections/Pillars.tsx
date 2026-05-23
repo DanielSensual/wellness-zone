@@ -48,16 +48,16 @@ export function Pillars() {
                   />
                 </div>
 
-                <div className="flex w-full items-center bg-background px-6 py-12 md:w-1/2 md:px-12 lg:px-16">
+                <div className="glass-section flex w-full items-center px-6 py-12 md:w-1/2 md:px-12 lg:px-16">
                   <div className="max-w-xl">
                     <div
-                      className="mb-5 h-1 w-[60px] rounded-full bg-brand shadow-[0_0_18px_rgba(159,204,62,0.6)]"
+                      className="animate-float mb-5 h-1 w-[60px] rounded-full bg-brand shadow-[0_0_18px_rgba(159,204,62,0.6)]"
                       aria-hidden
                     />
-                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand">
+                    <p className="text-glow text-xs font-semibold uppercase tracking-[0.25em] text-brand">
                       Pillar 0{index + 1}
                     </p>
-                    <h3 className="font-display text-gradient-brand mt-3 text-4xl font-bold uppercase tracking-tight sm:text-5xl">
+                    <h3 className="font-display text-shimmer mt-3 text-4xl font-bold uppercase tracking-tight sm:text-5xl">
                       {pillar.title}
                     </h3>
                     <p className="mt-2 text-sm font-medium uppercase tracking-wide text-brand-light">
@@ -83,8 +83,8 @@ export function Pillars() {
 
       <Container className="pb-16 pt-16 sm:pb-24">
         <Reveal>
-          <div className="rounded-2xl border-t-2 border-brand bg-surface-elevated p-8 text-center glow-green sm:p-10">
-            <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl">
+          <div className="glass-section rounded-2xl border-t-2 border-brand p-8 text-center sm:p-10">
+            <h3 className="font-display text-3d-subtle text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl">
               {pricing.title}
             </h3>
             <p className="mx-auto mt-4 max-w-3xl text-foreground">

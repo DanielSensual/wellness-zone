@@ -27,7 +27,7 @@ export function ScrollToTop() {
     <button
       type="button"
       className={cn(
-        "fixed bottom-5 right-5 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand/20 bg-surface-elevated text-brand transition-all duration-300 glow-green-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "fixed bottom-5 right-5 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full glass-panel text-brand transition-all duration-300 hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0",

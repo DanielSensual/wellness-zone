@@ -48,7 +48,7 @@ export async function Reviews() {
               >
                 <blockquote
                   className={cn(
-                    "flex h-full flex-col rounded-2xl border-l-4 border-brand bg-surface-elevated p-8 glow-green transition-all duration-300 hover:glow-green-hover",
+                    "flex h-full flex-col rounded-2xl border-l-4 border-brand glass-card p-8 transition-all duration-300",
                     featured && "lg:p-10",
                   )}
                 >

@@ -102,7 +102,7 @@ export function TeamScroller({ members }: Props) {
           <article
             key={member.name}
             data-team-card
-            className="group flex w-[280px] shrink-0 snap-center flex-col overflow-hidden rounded-2xl bg-surface-elevated transition-all duration-300 hover:-translate-y-1 hover:ring-1 hover:ring-brand/40 sm:w-[340px]"
+            className="group flex w-[280px] shrink-0 snap-center flex-col overflow-hidden rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 hover:ring-1 hover:ring-brand/40 sm:w-[340px]"
           >
             <div className="relative aspect-[3/4] w-full overflow-hidden">
               <Image
@@ -118,7 +118,7 @@ export function TeamScroller({ members }: Props) {
               />
             </div>
             <div className="flex flex-1 flex-col p-6">
-              <h3 className="font-display text-xl font-bold uppercase tracking-tight text-white">
+              <h3 className="font-display text-glow text-xl font-bold uppercase tracking-tight text-white">
                 {member.name}
               </h3>
               <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand">

@@ -117,6 +117,47 @@ body {
     0 10px 40px rgba(159, 204, 62, 0.08);
 }
 
+/* Subtle 3D for section headings */
+.text-3d-subtle {
+  text-shadow:
+    0 1px 0 rgba(159, 204, 62, 0.25),
+    0 2px 0 rgba(159, 204, 62, 0.15),
+    0 3px 8px rgba(0, 0, 0, 0.4),
+    0 6px 20px rgba(159, 204, 62, 0.06);
+}
+
+/* Glowing text for card titles */
+.text-glow {
+  text-shadow:
+    0 0 10px rgba(159, 204, 62, 0.3),
+    0 0 30px rgba(159, 204, 62, 0.1),
+    0 0 60px rgba(159, 204, 62, 0.05);
+}
+
+/* Animated shimmer text */
+.text-shimmer {
+  background: linear-gradient(
+    110deg,
+    #9fcc3e 0%,
+    #ffffff 40%,
+    #c3dd8a 50%,
+    #ffffff 60%,
+    #9fcc3e 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  50% { background-position: 0% 0; }
+  100% { background-position: 100% 0; }
+}
+
 /* Green-to-white gradient text */
 .text-gradient-brand {
   background: linear-gradient(135deg, #9fcc3e 0%, #ffffff 70%);
@@ -144,10 +185,131 @@ body {
   box-shadow: 0 0 40px rgba(159, 204, 62, 0.2);
 }
 
+/* === GLASSMORPHISM SYSTEM === */
+
+/* Base glass panel */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(159, 204, 62, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Elevated glass — cards, content blocks */
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(159, 204, 62, 0.15);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(159, 204, 62, 0.35);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(159, 204, 62, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Heavy glass — sections, pricing blocks */
+.glass-section {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(159, 204, 62, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 60px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Animated border glow on hover */
+.border-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(159, 204, 62, 0.4) 25%,
+    transparent 50%,
+    rgba(159, 204, 62, 0.4) 75%,
+    transparent 100%
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: border-rotate 4s linear infinite;
+}
+
+.border-glow:hover::before {
+  opacity: 1;
+}
+
+.border-glow::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: inherit;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+@keyframes border-rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* Floating animation for accent elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Light mode glass adjustments */
+[data-theme="light"] .glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .glass-card:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(122, 184, 42, 0.3);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .glass-section {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .text-3d,
+[data-theme="light"] .text-3d-subtle {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .text-glow {
+  text-shadow: 0 0 10px rgba(122, 184, 42, 0.2);
 }
 
 /* Film grain overlay */
