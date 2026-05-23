@@ -28,8 +28,8 @@ export function Header({ transparent = false }: HeaderProps) {
       className={cn(
         "left-0 right-0 top-0 z-50",
         transparent
-          ? "absolute"
-          : "relative border-b border-brand-pale bg-white shadow-sm",
+          ? "absolute bg-black/30 backdrop-blur-md"
+          : "relative border-b border-brand/10 bg-background",
       )}
     >
       <Container className="flex h-16 items-center justify-between sm:h-20">
@@ -37,10 +37,10 @@ export function Header({ transparent = false }: HeaderProps) {
           <Image
             src="/images/logo.png"
             alt={site.name}
-            width={40}
+            width={140}
             height={40}
             className={cn(
-              "h-8 w-8 sm:h-10 sm:w-10",
+              "h-8 w-auto sm:h-10",
               transparent ? "brightness-0 invert" : "",
             )}
             priority
@@ -53,8 +53,8 @@ export function Header({ transparent = false }: HeaderProps) {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-brand",
-                transparent ? "text-white" : "text-ink-dark",
+                "text-sm font-medium transition-colors duration-300 hover:text-brand",
+                transparent ? "text-white/80" : "text-white/80",
               )}
             >
               {link.label}
@@ -67,16 +67,12 @@ export function Header({ transparent = false }: HeaderProps) {
 
         <button
           type="button"
-          className={cn(
-            "inline-flex items-center justify-center rounded-md p-2 md:hidden",
-            transparent ? "text-white" : "text-ink-dark",
-          )}
+          className="inline-flex items-center justify-center rounded-md p-2 text-white md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="sr-only">{open ? "Close" : "Menu"}</span>
           <svg
             className="h-6 w-6"
             fill="none"
@@ -106,7 +102,7 @@ export function Header({ transparent = false }: HeaderProps) {
       <div
         id="mobile-menu"
         className={cn(
-          "border-t border-brand-pale/60 bg-white md:hidden",
+          "border-t border-brand/10 bg-surface-elevated md:hidden",
           open ? "block" : "hidden",
         )}
       >
@@ -115,7 +111,7 @@ export function Header({ transparent = false }: HeaderProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="text-base font-medium text-ink-dark"
+              className="text-base font-medium text-white transition-colors duration-300 hover:text-brand"
               onClick={() => setOpen(false)}
             >
               {link.label}
@@ -124,10 +120,7 @@ export function Header({ transparent = false }: HeaderProps) {
           <Button href="/get-started" className="w-full">
             Free Consultation
           </Button>
-          <a
-            href={contact.phoneHref}
-            className="text-sm text-ink"
-          >
+          <a href={contact.phoneHref} className="text-sm text-white/70">
             {contact.phone}
           </a>
         </Container>

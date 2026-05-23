@@ -47,24 +47,24 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-surface py-12 sm:py-16">
+      <main className="flex-1 bg-background py-12 sm:py-16">
         <Container className="max-w-3xl">
           <Link
             href="/"
-            className="mb-6 inline-block text-sm text-ink hover:text-brand"
+            className="mb-6 inline-block text-sm text-foreground/70 transition-colors duration-300 hover:text-brand"
           >
             ← Back to home
           </Link>
 
-          <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-10">
+          <div className="rounded-2xl border border-brand/20 bg-surface-elevated p-6 sm:p-10">
             <p className="text-sm font-semibold uppercase tracking-wide text-brand">
               {site.name}
             </p>
-            <h1 className="mt-3 text-3xl font-bold text-ink-dark sm:text-4xl">
+            <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
               Privacy Policy
             </h1>
-            <p className="mt-3 text-sm text-ink">Last updated: May 23, 2026</p>
-            <p className="mt-6 leading-relaxed text-ink">
+            <p className="mt-3 text-sm text-foreground/60">Last updated: May 23, 2026</p>
+            <p className="mt-6 leading-relaxed text-foreground">
               This privacy policy explains how Wellness Zone collects, uses,
               and protects information submitted through this website.
             </p>
@@ -72,12 +72,10 @@ export default function PrivacyPolicyPage() {
             <div className="mt-10 space-y-8">
               {sections.map((section) => (
                 <section key={section.title}>
-                  <h2 className="text-xl font-bold text-ink-dark">
-                    {section.title}
-                  </h2>
+                  <h2 className="text-xl font-bold text-white">{section.title}</h2>
                   <div className="mt-3 space-y-3">
                     {section.body.map((paragraph) => (
-                      <p key={paragraph} className="leading-relaxed text-ink">
+                      <p key={paragraph} className="leading-relaxed text-foreground">
                         {paragraph}
                       </p>
                     ))}
@@ -86,16 +84,16 @@ export default function PrivacyPolicyPage() {
               ))}
 
               <section>
-                <h2 className="text-xl font-bold text-ink-dark">Contact</h2>
-                <address className="mt-3 space-y-2 not-italic text-ink">
+                <h2 className="text-xl font-bold text-white">Contact</h2>
+                <address className="mt-3 space-y-2 not-italic text-foreground">
                   <p>{contact.address.full}</p>
                   <p>
-                    <a href={contact.phoneHref} className="hover:text-brand">
+                    <a href={contact.phoneHref} className="text-brand hover:underline">
                       {contact.phone}
                     </a>
                   </p>
                   <p>
-                    <a href={contact.emailHref} className="hover:text-brand">
+                    <a href={contact.emailHref} className="text-brand hover:underline">
                       {contact.email}
                     </a>
                   </p>

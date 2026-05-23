@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { DM_Sans, Oswald } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
@@ -7,10 +7,17 @@ import { site } from "@/lib/content/site";
 import { getLocalBusinessSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
-const lato = Lato({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "700"],
-  variable: "--font-lato",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-oswald",
   display: "swap",
 });
 
@@ -61,14 +68,14 @@ export default function RootLayout({
   const schema = getLocalBusinessSchema();
 
   return (
-    <html lang="en" className={`${lato.variable} h-full`}>
+    <html lang="en" className={`${dmSans.variable} ${oswald.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased">
+      <body className="min-h-full flex flex-col antialiased bg-background text-foreground">
         {children}
         <ScrollToTop />
         <Analytics />

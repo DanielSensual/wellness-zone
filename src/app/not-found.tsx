@@ -16,13 +16,13 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-surface py-20 sm:py-28">
+      <main className="flex-1 bg-background py-20 sm:py-28">
         <Container className="max-w-2xl text-center">
           <p className="text-7xl font-bold text-brand sm:text-8xl">404</p>
-          <h1 className="mt-4 text-3xl font-bold text-ink-dark sm:text-4xl">
+          <h1 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
             We couldn&apos;t find that page
           </h1>
-          <p className="mt-4 text-lg text-ink">
+          <p className="mt-4 text-lg text-foreground">
             The page may have moved or never existed. Let&apos;s get you back on
             track.
           </p>
@@ -34,7 +34,7 @@ export default function NotFound() {
               Start Free Consultation
             </Button>
           </div>
-          <p className="mt-10 text-sm text-ink">
+          <p className="mt-10 text-sm text-foreground">
             Need help? Call{" "}
             <a href={contact.phoneHref} className="font-semibold text-brand hover:underline">
               {contact.phone}

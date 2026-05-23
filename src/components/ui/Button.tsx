@@ -14,16 +14,16 @@ type ButtonProps = {
 
 const variants = {
   primary:
-    "bg-brand text-white hover:bg-brand-hover hover:text-black focus-visible:ring-brand",
+    "bg-brand text-black font-semibold shadow-[0_0_20px_rgba(159,204,62,0.2)] hover:bg-brand-hover hover:text-black hover:shadow-[0_0_28px_rgba(159,204,62,0.35)] focus-visible:ring-brand",
   outline:
-    "border-2 border-brand text-ink-dark hover:bg-brand-pale focus-visible:ring-brand",
-  ghost: "text-ink-dark hover:bg-brand-pale focus-visible:ring-brand",
+    "border-2 border-brand bg-transparent text-brand hover:bg-brand/10 focus-visible:ring-brand",
+  ghost: "text-white hover:bg-white/5 focus-visible:ring-brand",
 };
 
 const sizes = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-base",
-  lg: "px-8 py-4 text-lg",
+  sm: "px-5 py-2.5 text-sm",
+  md: "px-7 py-3 text-base",
+  lg: "px-9 py-4 text-lg",
 };
 
 export function Button({
@@ -37,7 +37,7 @@ export function Button({
   onClick,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-full font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
     sizes[size],
     className,

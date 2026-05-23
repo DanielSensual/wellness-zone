@@ -23,14 +23,14 @@ export async function Reviews() {
         />
 
         {data.source === "fallback" && data.error ? (
-          <p className="mb-6 text-center text-sm text-ink/70">
+          <p className="-mt-6 mb-8 text-center text-sm text-foreground/60">
             Showing featured testimonials. Connect Google Places API for live
             reviews.
           </p>
         ) : null}
 
         {data.rating ? (
-          <div className="mb-8 flex justify-center">
+          <div className="-mt-4 mb-8 flex justify-center">
             <StarRating rating={data.rating} />
           </div>
         ) : null}
@@ -38,18 +38,18 @@ export async function Reviews() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {data.reviews.map((review, index) => (
             <Reveal key={`${review.author}-${index}`} delayMs={index * 90}>
-              <blockquote className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm">
+              <blockquote className="flex h-full flex-col rounded-2xl border-l-4 border-brand bg-surface-elevated p-6 glow-green transition-all duration-300 hover:glow-green-hover">
                 <StarRating rating={review.rating} />
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-ink">
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
                   &ldquo;{review.text}&rdquo;
                 </p>
-                <footer className="mt-4 border-t border-brand-pale pt-4">
+                <footer className="mt-4 border-t border-brand/20 pt-4">
                   <cite className="not-italic">
-                    <span className="font-semibold text-ink-dark">
+                    <span className="font-semibold text-white">
                       {review.author}
                     </span>
                     {review.relativeTime ? (
-                      <span className="ml-2 text-xs text-ink/70">
+                      <span className="ml-2 text-xs text-foreground/60">
                         {review.relativeTime}
                       </span>
                     ) : null}
@@ -65,7 +65,7 @@ export async function Reviews() {
             href={mapsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-brand hover:underline"
+            className="font-semibold text-brand transition-colors hover:underline"
           >
             Read all reviews on Google →
           </Link>

@@ -97,17 +97,22 @@ INTAKE_WEBHOOK_URL=...  # optional, to store lead before redirect
 npm run build
 ```
 
+## Design direction
+
+**Dark premium UI** per [`REDESIGN.md`](REDESIGN.md). Near-black canvas, glassmorphism cards, green glow accents (`#9FCC3E`), white headings, and `#E0E0E0` body text. Not a WordPress layout clone.
+
 ## Brand colors
 
-Extracted from the live WordPress/Elementor site (confirm with client):
-
-| Token | Hex |
-|-------|-----|
-| Primary / accent | `#9FCC3E` |
-| Light accent | `#C3DD8A` |
-| Pale accent | `#D5E7AF` |
-| Body text | `#444444` |
-| Headings | `#333333` |
+| Token | Hex | Usage |
+|-------|-----|--------|
+| Primary / accent | `#9FCC3E` | CTAs, borders, glows |
+| Hover | `#D8673D` | Button hover |
+| Light accent | `#C3DD8A` | Hero subhead tint |
+| Background | `#0A0A0A` | Page canvas |
+| Surface | `#141414` | Alternating sections |
+| Surface elevated | `#1A1A1A` | Cards, forms |
+| Body text | `#E0E0E0` | Paragraphs |
+| Headings | `#FFFFFF` | Titles |
 
 ## Awaiting client input
 

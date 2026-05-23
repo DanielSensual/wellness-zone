@@ -19,22 +19,20 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <main className="flex min-h-screen flex-1 items-center justify-center bg-surface py-16">
+    <main className="flex min-h-screen flex-1 items-center justify-center bg-background py-16">
       <Container className="max-w-xl text-center">
-        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-brand-pale text-3xl">
-          <span aria-hidden>!</span>
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-brand/10 text-3xl text-brand">
+          !
         </div>
-        <h1 className="text-3xl font-bold text-ink-dark sm:text-4xl">
+        <h1 className="text-3xl font-bold text-white sm:text-4xl">
           Something went wrong
         </h1>
-        <p className="mt-4 text-lg text-ink">
-          We hit an unexpected snag. Please try again, or reach out and
-          we&apos;ll help personally.
+        <p className="mt-4 text-lg text-foreground">
+          We hit an unexpected snag. Please try again, or reach out and we&apos;ll
+          help personally.
         </p>
         {error.digest ? (
-          <p className="mt-2 text-xs text-ink/60">
-            Reference: {error.digest}
-          </p>
+          <p className="mt-2 text-xs text-foreground/60">Reference: {error.digest}</p>
         ) : null}
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button onClick={reset} size="lg">
@@ -42,17 +40,14 @@ export default function GlobalError({
           </Button>
           <Link
             href="/"
-            className="text-sm font-medium text-ink hover:text-brand"
+            className="text-sm font-medium text-foreground hover:text-brand"
           >
             ← Back to {site.name}
           </Link>
         </div>
-        <p className="mt-10 text-sm text-ink">
+        <p className="mt-10 text-sm text-foreground">
           Or call us:{" "}
-          <a
-            href={contact.phoneHref}
-            className="font-semibold text-brand hover:underline"
-          >
+          <a href={contact.phoneHref} className="font-semibold text-brand hover:underline">
             {contact.phone}
           </a>
         </p>

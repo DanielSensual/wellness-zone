@@ -5,14 +5,14 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Location() {
   return (
-    <section id="location" className="scroll-mt-20 py-16 sm:py-24">
+    <section id="location" className="scroll-mt-20 bg-background py-16 sm:py-24">
       <Container>
         <SectionHeading title="Visit Us" subtitle="Winter Park, Florida" />
 
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-6">
-            <address className="space-y-4 text-ink not-italic">
-              <p className="text-lg font-semibold text-ink-dark">
+            <address className="space-y-4 not-italic">
+              <p className="text-lg font-semibold text-white">
                 {contact.address.full}
               </p>
               <p>
@@ -37,13 +37,13 @@ export function Location() {
               href={contact.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block text-sm font-medium text-ink hover:text-brand"
+              className="inline-block text-sm font-medium text-foreground transition-colors hover:text-brand"
             >
               Open in Google Maps →
             </a>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-brand-pale shadow-sm">
+          <div className="overflow-hidden rounded-2xl border border-brand/20">
             <iframe
               title="Wellness Zone location map"
               src={contact.mapsEmbedUrl}

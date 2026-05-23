@@ -58,26 +58,29 @@ export function IntakeForm() {
 
   if (state.ok && state.message) {
     return (
-      <div className="rounded-2xl border border-brand-pale bg-brand-pale/30 p-8 text-center">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand text-2xl text-ink-dark">
+      <div className="rounded-2xl border border-brand/30 bg-brand/10 p-8 text-center">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand text-2xl font-bold text-black">
           ✓
         </div>
-        <h2 className="text-2xl font-bold text-ink-dark">You&apos;re all set!</h2>
-        <p className="mt-3 text-ink">{state.message}</p>
+        <h2 className="text-2xl font-bold text-white">You&apos;re all set!</h2>
+        <p className="mt-3 text-foreground">{state.message}</p>
         {state.calendlyUrl ? (
-          <div className="mt-6">
+          <div className="mt-6 shadow-[0_0_20px_rgba(159,204,62,0.3)]">
             <Button href={state.calendlyUrl} size="lg">
               Book Your Consultation Now
             </Button>
           </div>
         ) : null}
-        <p className="mt-6 text-sm text-ink">
+        <p className="mt-6 text-sm text-foreground">
           Questions? Call{" "}
           <a href={contact.phoneHref} className="font-semibold text-brand">
             {contact.phone}
           </a>
         </p>
-        <Link href="/" className="mt-4 inline-block text-sm text-ink hover:text-brand">
+        <Link
+          href="/"
+          className="mt-4 inline-block text-sm text-foreground/70 hover:text-brand"
+        >
           ← Back to home
         </Link>
       </div>
@@ -87,18 +90,31 @@ export function IntakeForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-6" noValidate>
       {!state.ok && state.message ? (
-        <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
+        <p
+          className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"
+          role="alert"
+        >
           {state.message}
         </p>
       ) : null}
 
       <div className="absolute -left-[9999px]" aria-hidden>
         <label htmlFor="website">Website</label>
-        <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
+        <input
+          id="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("website")}
+        />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="First Name" required error={errors.firstName?.message ?? state.fieldErrors?.firstName?.[0]}>
+        <Field
+          label="First Name"
+          required
+          error={errors.firstName?.message ?? state.fieldErrors?.firstName?.[0]}
+        >
           <input
             id="firstName"
             {...register("firstName")}
@@ -107,7 +123,11 @@ export function IntakeForm() {
             placeholder="Jane"
           />
         </Field>
-        <Field label="Last Name" required error={errors.lastName?.message ?? state.fieldErrors?.lastName?.[0]}>
+        <Field
+          label="Last Name"
+          required
+          error={errors.lastName?.message ?? state.fieldErrors?.lastName?.[0]}
+        >
           <input
             id="lastName"
             {...register("lastName")}
@@ -118,7 +138,11 @@ export function IntakeForm() {
         </Field>
       </div>
 
-      <Field label="Email" required error={errors.email?.message ?? state.fieldErrors?.email?.[0]}>
+      <Field
+        label="Email"
+        required
+        error={errors.email?.message ?? state.fieldErrors?.email?.[0]}
+      >
         <input
           id="email"
           type="email"
@@ -141,8 +165,8 @@ export function IntakeForm() {
       </Field>
 
       <fieldset>
-        <legend className="mb-3 text-sm font-semibold text-ink-dark">
-          Best time to reach you <span className="text-red-600">*</span>
+        <legend className="mb-3 text-sm font-semibold text-white">
+          Best time to reach you <span className="text-red-400">*</span>
         </legend>
         <div className="flex flex-wrap gap-3">
           {bestTimeOptions.map((value) => (
@@ -153,26 +177,26 @@ export function IntakeForm() {
                 {...register("bestTime")}
                 className="h-5 w-5 accent-brand"
               />
-              <span className="text-sm text-ink">{bestTimeLabels[value]}</span>
+              <span className="text-sm text-foreground">{bestTimeLabels[value]}</span>
             </label>
           ))}
         </div>
         {(errors.bestTime?.message ?? state.fieldErrors?.bestTime?.[0]) && (
-          <p className="mt-1 text-sm text-red-600">
+          <p className="mt-1 text-sm text-red-400">
             {errors.bestTime?.message ?? state.fieldErrors?.bestTime?.[0]}
           </p>
         )}
       </fieldset>
 
       <fieldset>
-        <legend className="mb-3 text-sm font-semibold text-ink-dark">
-          Interested in <span className="text-red-600">*</span>
+        <legend className="mb-3 text-sm font-semibold text-white">
+          Interested in <span className="text-red-400">*</span>
         </legend>
         <div className="space-y-3">
           {interestOptions.map((value) => (
             <label
               key={value}
-              className="flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-brand-pale px-4 py-3 has-[:checked]:border-brand has-[:checked]:bg-brand-pale/40"
+              className="flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-brand/20 px-4 py-3 transition-all duration-300 has-[:checked]:border-brand has-[:checked]:bg-brand/10"
             >
               <input
                 type="checkbox"
@@ -180,22 +204,27 @@ export function IntakeForm() {
                 {...register("interests")}
                 className="h-5 w-5 rounded accent-brand"
               />
-              <span className="font-medium text-ink-dark">{pillarLabels[value]}</span>
+              <span className="font-medium text-white">{pillarLabels[value]}</span>
             </label>
           ))}
         </div>
         {(errors.interests?.message ?? state.fieldErrors?.interests?.[0]) && (
-          <p className="mt-1 text-sm text-red-600">
+          <p className="mt-1 text-sm text-red-400">
             {errors.interests?.message ?? state.fieldErrors?.interests?.[0]}
           </p>
         )}
       </fieldset>
 
-      <Button type="submit" size="lg" className="w-full" disabled={pending}>
+      <Button
+        type="submit"
+        size="lg"
+        className="w-full shadow-[0_0_20px_rgba(159,204,62,0.3)]"
+        disabled={pending}
+      >
         {pending ? "Submitting…" : "Request Free Consultation"}
       </Button>
 
-      <p className="text-center text-xs text-ink/70">
+      <p className="text-center text-xs text-foreground/60">
         By submitting, you agree to be contacted about your consultation request.
       </p>
     </form>
@@ -203,7 +232,7 @@ export function IntakeForm() {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-brand-pale bg-white px-4 py-3 text-base text-ink-dark placeholder:text-ink/50 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30 min-h-12";
+  "w-full rounded-xl border border-brand/20 bg-white/5 px-4 py-3 text-base text-white placeholder:text-white/30 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30 min-h-12 transition-all duration-300";
 
 function Field({
   label,
@@ -218,12 +247,12 @@ function Field({
 }) {
   return (
     <div>
-      <label className="mb-2 block text-sm font-semibold text-ink-dark">
+      <label className="mb-2 block text-sm font-semibold text-white">
         {label}
-        {required ? <span className="text-red-600"> *</span> : null}
+        {required ? <span className="text-red-400"> *</span> : null}
       </label>
       {children}
-      {error ? <p className="mt-1 text-sm text-red-600">{error}</p> : null}
+      {error ? <p className="mt-1 text-sm text-red-400">{error}</p> : null}
     </div>
   );
 }

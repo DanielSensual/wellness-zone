@@ -15,22 +15,22 @@ export default function GetStartedPage() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-surface py-12 sm:py-16">
+      <main className="flex-1 bg-background py-12 sm:py-16">
         <Container className="max-w-lg">
           <Link
             href="/"
-            className="mb-6 inline-block text-sm text-ink hover:text-brand"
+            className="mb-6 inline-block text-sm text-foreground/70 transition-colors duration-300 hover:text-brand"
           >
             ← Back to home
           </Link>
-          <h1 className="text-3xl font-bold text-ink-dark sm:text-4xl">
+          <h1 className="text-3xl font-bold text-white sm:text-4xl">
             Start Your Free Consultation
           </h1>
-          <p className="mt-3 text-ink">
+          <p className="mt-3 text-foreground">
             Tell us a bit about yourself and we&apos;ll reach out to schedule
             your complimentary consultation. No commitment required.
           </p>
-          <div className="mt-8 rounded-2xl bg-white p-6 shadow-sm sm:p-8">
+          <div className="mt-8 rounded-2xl bg-surface-elevated p-6 sm:p-8">
             <IntakeForm />
           </div>
         </Container>

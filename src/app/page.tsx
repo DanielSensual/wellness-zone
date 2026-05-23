@@ -5,6 +5,7 @@ import { Pillars } from "@/components/sections/Pillars";
 import { Team } from "@/components/sections/Team";
 import { Reviews } from "@/components/sections/Reviews";
 import { Location } from "@/components/sections/Location";
+import { CtaBanner } from "@/components/sections/CtaBanner";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Team />
         <Reviews />
         <Location />
+        <CtaBanner />
       </main>
       <Footer />
     </>

@@ -6,12 +6,7 @@ import { CTAButton } from "@/components/ui/CTAButton";
 
 function FacebookIcon() {
   return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-    >
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
       <path d="M14.2 8.4V6.9c0-.7.5-.9.8-.9h2V2.6L14.2 2.6c-3.1 0-3.8 2.3-3.8 3.8v2H8v3.4h2.4V22h3.8V11.8h2.6l.4-3.4h-3z" />
     </svg>
   );
@@ -40,11 +35,11 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-brand-pale bg-ink-dark text-white">
-      <Container className="py-12">
+    <footer className="border-t border-brand/10 bg-[#050505] py-12">
+      <Container>
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           <div>
-            <p className="text-xl font-bold">{site.name}</p>
+            <p className="text-xl font-bold text-white">{site.name}</p>
             <p className="mt-2 text-sm text-white/80">{site.tagline}</p>
             <div className="mt-6">
               <CTAButton size="sm" />
@@ -52,7 +47,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-semibold">Contact</p>
+            <p className="font-semibold text-white">Contact</p>
             <address className="mt-3 space-y-2 text-sm not-italic text-white/80">
               <p>{contact.address.full}</p>
               <p>
@@ -69,13 +64,13 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-semibold">Follow Us</p>
+            <p className="font-semibold text-white">Follow Us</p>
             <div className="mt-3 flex gap-4">
               <a
                 href={contact.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-brand hover:text-brand"
+                className="text-white/70 transition-colors duration-300 hover:text-brand"
                 aria-label="Facebook"
               >
                 <FacebookIcon />
@@ -84,7 +79,7 @@ export function Footer() {
                 href={contact.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-brand hover:text-brand"
+                className="text-white/70 transition-colors duration-300 hover:text-brand"
                 aria-label="Instagram"
               >
                 <InstagramIcon />
@@ -107,7 +102,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-white/60">
+        <p className="mt-10 border-t border-brand/10 pt-6 text-center text-sm text-white/40">
           © {year} {site.name}. All rights reserved.
         </p>
       </Container>

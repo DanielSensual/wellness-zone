@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #808285;
+  --background: #0a0a0a;
+  --foreground: #e0e0e0;
   --brand: #9fcc3e;
-  --brand-hover: #D8673D;
+  --brand-hover: #d8673d;
+  --brand-glow: rgba(159, 204, 62, 0.15);
   --brand-light: #c3dd8a;
-  --brand-pale: #d5e7af;
-  --ink-dark: #444444;
-  --surface: #f5f5f5;
+  --brand-pale: rgba(159, 204, 62, 0.1);
+  --ink-dark: #ffffff;
+  --surface: #141414;
+  --surface-elevated: #1a1a1a;
+  --border-subtle: rgba(159, 204, 62, 0.2);
 }
 
 @theme inline {
@@ -16,12 +19,15 @@
   --color-foreground: var(--foreground);
   --color-brand: var(--brand);
   --color-brand-hover: var(--brand-hover);
+  --color-brand-glow: var(--brand-glow);
   --color-brand-light: var(--brand-light);
   --color-brand-pale: var(--brand-pale);
   --color-ink: var(--foreground);
   --color-ink-dark: var(--ink-dark);
   --color-surface: var(--surface);
-  --font-sans: var(--font-lato);
+  --color-surface-elevated: var(--surface-elevated);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-oswald), ui-sans-serif, sans-serif;
 }
 
 html {
@@ -31,10 +37,54 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-lato), system-ui, sans-serif;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
 
 ::selection {
-  background-color: #9FCC3E;
+  background-color: #9fcc3e;
   color: #000;
+}
+
+.glow-green {
+  box-shadow: 0 0 30px rgba(159, 204, 62, 0.1);
+}
+
+.glow-green-hover:hover {
+  box-shadow: 0 0 40px rgba(159, 204, 62, 0.2);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(159, 204, 62, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+/* Cinematic film grain overlay */
+.grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+.hero-ken-burns {
+  animation: ken-burns 22s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ken-burns {
+    animation: none;
+    transform: scale(1.06);
+  }
 }
