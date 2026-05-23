@@ -27,7 +27,7 @@
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
   --font-sans: var(--font-lato);
-  --font-display: var(--font-syne), ui-sans-serif, sans-serif;
+  --font-display: var(--font-oswald), ui-sans-serif, sans-serif;
 }
 
 html {

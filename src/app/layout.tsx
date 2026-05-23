@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lato, Syne } from "next/font/google";
+import { Lato, Oswald } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
@@ -14,10 +14,10 @@ const lato = Lato({
   display: "swap",
 });
 
-const syne = Syne({
+const oswald = Oswald({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  variable: "--font-syne",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-oswald",
   display: "swap",
 });
 
@@ -68,7 +68,7 @@ export default function RootLayout({
   const schema = getLocalBusinessSchema();
 
   return (
-    <html lang="en" className={`${lato.variable} ${syne.variable} h-full`}>
+    <html lang="en" className={`${lato.variable} ${oswald.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"
