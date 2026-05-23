@@ -14,7 +14,7 @@ export const contact = {
   mapsUrl:
     "https://www.google.com/maps/place/2635+Temple+Dr,+Winter+Park,+FL+32789",
   mapsEmbedUrl:
-    "https://maps.google.com/maps?q=2635+Temple+Drive,+Winter+Park,+FL+32789&output=embed",
+    "https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1s2635+Temple+Drive,+Winter+Park,+FL+32789",
   social: {
     facebook: "https://www.facebook.com/MyWellnessZone/",
     instagram: "https://www.instagram.com/wellnesszone/",

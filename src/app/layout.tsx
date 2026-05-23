@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { site } from "@/lib/content/site";
 import { getLocalBusinessSchema } from "@/lib/seo/schema";
@@ -30,13 +32,20 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} | Personal Training in Winter Park, FL`,
     description: site.description,
-    images: [{ url: "/images/logo.png", width: 500, height: 500, alt: site.name }],
+    images: [
+      {
+        url: "/images/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — Personal Training in Winter Park, FL`,
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: site.name,
     description: site.description,
-    images: ["/images/logo.png"],
+    images: ["/images/og.png"],
   },
   robots: {
     index: true,
@@ -62,6 +71,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col antialiased">
         {children}
         <ScrollToTop />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
