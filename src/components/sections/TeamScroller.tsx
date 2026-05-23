@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { TeamMember } from "@/lib/content/team";
+import { Tilt3D } from "@/components/ui/Tilt3D";
 import { cn } from "@/lib/utils/cn";
 
 type Props = {
@@ -104,7 +105,7 @@ export function TeamScroller({ members }: Props) {
             data-team-card
             className="group flex w-[280px] shrink-0 snap-center flex-col overflow-hidden rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 hover:ring-1 hover:ring-brand/40 sm:w-[340px]"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden">
+            <Tilt3D className="relative aspect-[3/4] w-full overflow-hidden" maxTilt={8} glowIntensity={0.8}>
               <Image
                 src={member.image}
                 alt={member.name}
@@ -116,7 +117,7 @@ export function TeamScroller({ members }: Props) {
                 className="absolute inset-0 bg-gradient-to-t from-surface-elevated via-transparent to-transparent"
                 aria-hidden
               />
-            </div>
+            </Tilt3D>
             <div className="flex flex-1 flex-col p-6">
               <h3 className="font-display text-glow text-xl font-bold uppercase tracking-tight text-white">
                 {member.name}

@@ -6,6 +6,7 @@ import { CTAButton } from "@/components/ui/CTAButton";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Tilt3D } from "@/components/ui/Tilt3D";
 import { cn } from "@/lib/utils/cn";
 
 export function Pillars() {
@@ -30,15 +31,15 @@ export function Pillars() {
                   reverse ? "md:flex-row-reverse" : "md:flex-row",
                 )}
               >
-                <div className="relative h-[300px] w-full md:h-auto md:w-1/2">
+                <Tilt3D className="relative h-[300px] w-full md:h-auto md:w-1/2">
                   <Image
                     src={pillar.image}
                     alt=""
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                  <div className="absolute inset-0 bg-black/50" aria-hidden />
+                  <div className="absolute inset-0 bg-black/50 transition-opacity duration-300 hover:bg-black/30" aria-hidden />
                   <div
                     className={cn(
                       "absolute inset-y-0 w-px bg-brand/30",
@@ -46,7 +47,7 @@ export function Pillars() {
                     )}
                     aria-hidden
                   />
-                </div>
+                </Tilt3D>
 
                 <div className="glass-section flex w-full items-center px-6 py-12 md:w-1/2 md:px-12 lg:px-16">
                   <div className="max-w-xl">
