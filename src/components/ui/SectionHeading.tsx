@@ -6,12 +6,14 @@ export function SectionHeading({
   subtitle,
   className,
   align = "center",
+  gradient = true,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   className?: string;
   align?: "center" | "left";
+  gradient?: boolean;
 }) {
   return (
     <div
@@ -28,7 +30,8 @@ export function SectionHeading({
       ) : null}
       <h2
         className={cn(
-          "mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl",
+          "font-display mt-2 text-4xl font-bold uppercase leading-[1.05] tracking-tight sm:text-5xl",
+          gradient ? "text-gradient-brand" : "text-white",
           eyebrow && "mt-3",
         )}
       >

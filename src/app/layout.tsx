@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Oswald } from "next/font/google";
+import { Lato, Syne } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
@@ -7,17 +7,17 @@ import { site } from "@/lib/content/site";
 import { getLocalBusinessSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const lato = Lato({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-dm-sans",
+  weight: ["300", "400", "700"],
+  variable: "--font-lato",
   display: "swap",
 });
 
-const oswald = Oswald({
+const syne = Syne({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-oswald",
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-syne",
   display: "swap",
 });
 
@@ -68,7 +68,7 @@ export default function RootLayout({
   const schema = getLocalBusinessSchema();
 
   return (
-    <html lang="en" className={`${dmSans.variable} ${oswald.variable} h-full`}>
+    <html lang="en" className={`${lato.variable} ${syne.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"

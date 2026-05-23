@@ -26,8 +26,8 @@
   --color-ink-dark: var(--ink-dark);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
-  --font-sans: var(--font-dm-sans);
-  --font-display: var(--font-oswald), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-lato);
+  --font-display: var(--font-syne), ui-sans-serif, sans-serif;
 }
 
 html {
@@ -37,12 +37,42 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-family: var(--font-lato), system-ui, sans-serif;
 }
 
 ::selection {
   background-color: #9fcc3e;
   color: #000;
+}
+
+/* 3D text effect for hero H1 */
+.text-3d {
+  text-shadow:
+    0 1px 0 rgba(159, 204, 62, 0.4),
+    0 2px 0 rgba(159, 204, 62, 0.3),
+    0 3px 0 rgba(159, 204, 62, 0.2),
+    0 4px 0 rgba(159, 204, 62, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.6),
+    0 10px 40px rgba(159, 204, 62, 0.08);
+}
+
+/* Green-to-white gradient text */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #9fcc3e 0%, #ffffff 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Hide scrollbar (Webkit + Firefox) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 .glow-green {
@@ -59,7 +89,7 @@ body {
   backdrop-filter: blur(8px);
 }
 
-/* Cinematic film grain overlay */
+/* Film grain overlay */
 .grain::after {
   content: "";
   pointer-events: none;
@@ -69,6 +99,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Slow Ken Burns on hero imagery */
 @keyframes ken-burns {
   from {
     transform: scale(1.05);
@@ -82,9 +113,46 @@ body {
   animation: ken-burns 22s ease-out forwards;
 }
 
+/* Pulsing green accent line behind hero headline */
+@keyframes hero-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.hero-pulse {
+  animation: hero-pulse 4s ease-in-out infinite;
+}
+
+/* Bouncing scroll indicator arrow */
+@keyframes scroll-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.9;
+  }
+}
+
+.scroll-bounce {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-ken-burns {
     animation: none;
     transform: scale(1.06);
+  }
+
+  .hero-pulse,
+  .scroll-bounce {
+    animation: none;
   }
 }
