@@ -2,6 +2,7 @@ import Link from "next/link";
 import { contact } from "@/lib/content/contact";
 import { fetchGoogleReviews } from "@/lib/reviews/google";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StarRating } from "@/components/ui/StarRating";
 
@@ -36,27 +37,26 @@ export async function Reviews() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {data.reviews.map((review, index) => (
-            <blockquote
-              key={`${review.author}-${index}`}
-              className="flex flex-col rounded-2xl bg-white p-6 shadow-sm"
-            >
-              <StarRating rating={review.rating} />
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-ink">
-                &ldquo;{review.text}&rdquo;
-              </p>
-              <footer className="mt-4 border-t border-brand-pale pt-4">
-                <cite className="not-italic">
-                  <span className="font-semibold text-ink-dark">
-                    {review.author}
-                  </span>
-                  {review.relativeTime ? (
-                    <span className="ml-2 text-xs text-ink/70">
-                      {review.relativeTime}
+            <Reveal key={`${review.author}-${index}`} delayMs={index * 90}>
+              <blockquote className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm">
+                <StarRating rating={review.rating} />
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-ink">
+                  &ldquo;{review.text}&rdquo;
+                </p>
+                <footer className="mt-4 border-t border-brand-pale pt-4">
+                  <cite className="not-italic">
+                    <span className="font-semibold text-ink-dark">
+                      {review.author}
                     </span>
-                  ) : null}
-                </cite>
-              </footer>
-            </blockquote>
+                    {review.relativeTime ? (
+                      <span className="ml-2 text-xs text-ink/70">
+                        {review.relativeTime}
+                      </span>
+                    ) : null}
+                  </cite>
+                </footer>
+              </blockquote>
+            </Reveal>
           ))}
         </div>
 

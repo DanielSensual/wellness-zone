@@ -10,38 +10,55 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
 const navLinks = [
-  { href: "#pillars", label: "Services" },
-  { href: "#team", label: "Team" },
-  { href: "#reviews", label: "Reviews" },
-  { href: "#location", label: "Location" },
+  { href: "/#pillars", label: "Services" },
+  { href: "/#team", label: "Team" },
+  { href: "/#reviews", label: "Reviews" },
+  { href: "/#location", label: "Location" },
 ];
 
-export function Header() {
+type HeaderProps = {
+  transparent?: boolean;
+};
+
+export function Header({ transparent = false }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50">
+    <header
+      className={cn(
+        "left-0 right-0 top-0 z-50",
+        transparent
+          ? "absolute"
+          : "relative border-b border-brand-pale bg-white shadow-sm",
+      )}
+    >
       <Container className="flex h-16 items-center justify-between sm:h-20">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <Image
             src="/images/logo.png"
             alt={site.name}
-            width={140}
+            width={40}
             height={40}
-            className="h-8 w-auto sm:h-10 brightness-0 invert"
+            className={cn(
+              "h-8 w-8 sm:h-10 sm:w-10",
+              transparent ? "brightness-0 invert" : "",
+            )}
             priority
           />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-white transition-colors hover:text-brand"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-brand",
+                transparent ? "text-white" : "text-ink-dark",
+              )}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <Button href="/get-started" size="sm">
             Free Consultation
@@ -50,7 +67,10 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md p-2 text-white md:hidden"
+          className={cn(
+            "inline-flex items-center justify-center rounded-md p-2 md:hidden",
+            transparent ? "text-white" : "text-ink-dark",
+          )}
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -92,14 +112,14 @@ export function Header() {
       >
         <Container className="flex flex-col gap-4 py-4">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-base font-medium text-ink-dark"
               onClick={() => setOpen(false)}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <Button href="/get-started" className="w-full">
             Free Consultation

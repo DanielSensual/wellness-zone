@@ -9,7 +9,7 @@ import { Location } from "@/components/sections/Location";
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header transparent />
       <main>
         <Hero />
         <Pillars />

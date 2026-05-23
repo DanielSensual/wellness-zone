@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { site } from "@/lib/content/site";
 import { getLocalBusinessSchema } from "@/lib/seo/schema";
 import "./globals.css";
@@ -58,7 +59,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body className="min-h-full flex flex-col antialiased">
+        {children}
+        <ScrollToTop />
+      </body>
     </html>
   );
 }
