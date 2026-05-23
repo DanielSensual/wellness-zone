@@ -7,14 +7,16 @@ export function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0">
-        <Image
-          src={hero.image}
-          alt=""
-          fill
-          priority
-          className="hero-ken-burns object-cover"
-          sizes="100vw"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={hero.image}
+          className="h-full w-full object-cover"
+        >
+          <source src="/images/hero.mp4" type="video/mp4" />
+        </video>
       </div>
       <div className="absolute inset-0 bg-black/70" aria-hidden />
       <div className="grain absolute inset-0" aria-hidden />
