@@ -1,27 +1,76 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0a0a0a;
-  --foreground: #e0e0e0;
+/* === DEFAULT: GREEN (Wellness Zone brand) === */
+:root,
+[data-color="green"] {
   --brand: #9fcc3e;
   --brand-hover: #d8673d;
   --brand-glow: rgba(159, 204, 62, 0.15);
   --brand-light: #c3dd8a;
   --brand-pale: rgba(159, 204, 62, 0.1);
+  --border-subtle: rgba(159, 204, 62, 0.2);
+
+  --background: #0a0a0a;
+  --foreground: #e0e0e0;
   --ink-dark: #ffffff;
   --surface: #141414;
   --surface-elevated: #1a1a1a;
-  --border-subtle: rgba(159, 204, 62, 0.2);
 }
 
-[data-theme="light"] {
+/* === BLUE: Commander Blue === */
+[data-color="blue"] {
+  --brand: #4d9fff;
+  --brand-hover: #3578d4;
+  --brand-glow: rgba(77, 159, 255, 0.15);
+  --brand-light: #8ec5ff;
+  --brand-pale: rgba(77, 159, 255, 0.1);
+  --border-subtle: rgba(77, 159, 255, 0.2);
+}
+
+/* === ORANGE: Ember Orange === */
+[data-color="orange"] {
+  --brand: #e8853d;
+  --brand-hover: #c46a28;
+  --brand-glow: rgba(232, 133, 61, 0.15);
+  --brand-light: #f0ab74;
+  --brand-pale: rgba(232, 133, 61, 0.1);
+  --border-subtle: rgba(232, 133, 61, 0.2);
+}
+
+/* === PURPLE: Royal Purple === */
+[data-color="purple"] {
+  --brand: #a87be0;
+  --brand-hover: #8a5cc4;
+  --brand-glow: rgba(168, 123, 224, 0.15);
+  --brand-light: #c9a8f0;
+  --brand-pale: rgba(168, 123, 224, 0.1);
+  --border-subtle: rgba(168, 123, 224, 0.2);
+}
+
+/* === RED: Forge Red === */
+[data-color="red"] {
+  --brand: #e04848;
+  --brand-hover: #c03030;
+  --brand-glow: rgba(224, 72, 72, 0.15);
+  --brand-light: #f08080;
+  --brand-pale: rgba(224, 72, 72, 0.1);
+  --border-subtle: rgba(224, 72, 72, 0.2);
+}
+
+/* === GOLD: Prestige Gold === */
+[data-color="gold"] {
+  --brand: #d4a54a;
+  --brand-hover: #b88a30;
+  --brand-glow: rgba(212, 165, 74, 0.15);
+  --brand-light: #e8c880;
+  --brand-pale: rgba(212, 165, 74, 0.1);
+  --border-subtle: rgba(212, 165, 74, 0.2);
+}
+
+/* === LIGHT MODE (works with any color) === */
+[data-mode="light"] {
   --background: #f8f8f8;
   --foreground: #444444;
-  --brand: #7ab82a;
-  --brand-hover: #d8673d;
-  --brand-glow: rgba(122, 184, 42, 0.12);
-  --brand-light: #9fcc3e;
-  --brand-pale: rgba(122, 184, 42, 0.08);
   --ink-dark: #1a1a1a;
   --surface: #ffffff;
   --surface-elevated: #f0f0f0;
@@ -56,28 +105,28 @@ body {
 }
 
 /* In light mode, override hardcoded text-white classes */
-[data-theme="light"] .text-white {
+[data-mode="light"] .text-white {
   color: var(--ink-dark) !important;
 }
 
-[data-theme="light"] .text-white\/80 {
+[data-mode="light"] .text-white\/80 {
   color: rgba(26, 26, 26, 0.8) !important;
 }
 
-[data-theme="light"] .text-white\/70 {
+[data-mode="light"] .text-white\/70 {
   color: rgba(26, 26, 26, 0.7) !important;
 }
 
-[data-theme="light"] .text-white\/60 {
+[data-mode="light"] .text-white\/60 {
   color: rgba(26, 26, 26, 0.6) !important;
 }
 
-[data-theme="light"] .text-white\/40 {
+[data-mode="light"] .text-white\/40 {
   color: rgba(26, 26, 26, 0.4) !important;
 }
 
 /* Light mode: keep hero/header dark since they have image backgrounds */
-[data-theme="light"] .text-3d {
+[data-mode="light"] .text-3d {
   text-shadow:
     0 1px 0 rgba(122, 184, 42, 0.3),
     0 2px 0 rgba(122, 184, 42, 0.2),
@@ -86,23 +135,23 @@ body {
 }
 
 /* Light mode gradient text adjustment */
-[data-theme="light"] .text-gradient-brand {
+[data-mode="light"] .text-gradient-brand {
   background: linear-gradient(135deg, #7ab82a 0%, #1a1a1a 70%);
   -webkit-background-clip: text;
   background-clip: text;
 }
 
 /* Light mode glow adjustments */
-[data-theme="light"] .glow-green {
+[data-mode="light"] .glow-green {
   box-shadow: 0 0 30px rgba(122, 184, 42, 0.08);
 }
 
-[data-theme="light"] .glow-green-hover:hover {
+[data-mode="light"] .glow-green-hover:hover {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 ::selection {
-  background-color: #9fcc3e;
+  background-color: var(--brand);
   color: #000;
 }
 
@@ -138,11 +187,11 @@ body {
 .text-shimmer {
   background: linear-gradient(
     110deg,
-    #9fcc3e 0%,
+    var(--brand) 0%,
     #ffffff 40%,
-    #c3dd8a 50%,
+    var(--brand-light) 50%,
     #ffffff 60%,
-    #9fcc3e 100%
+    var(--brand) 100%
   );
   background-size: 250% 100%;
   -webkit-background-clip: text;
@@ -158,9 +207,9 @@ body {
   100% { background-position: 100% 0; }
 }
 
-/* Green-to-white gradient text */
+/* Brand gradient text */
 .text-gradient-brand {
-  background: linear-gradient(135deg, #9fcc3e 0%, #ffffff 70%);
+  background: linear-gradient(135deg, var(--brand) 0%, #ffffff 70%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -281,34 +330,34 @@ body {
 }
 
 /* Light mode glass adjustments */
-[data-theme="light"] .glass-panel {
+[data-mode="light"] .glass-panel {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="light"] .glass-card {
+[data-mode="light"] .glass-card {
   background: rgba(255, 255, 255, 0.7);
   border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-[data-theme="light"] .glass-card:hover {
+[data-mode="light"] .glass-card:hover {
   background: rgba(255, 255, 255, 0.85);
   border-color: rgba(122, 184, 42, 0.3);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
 }
 
-[data-theme="light"] .glass-section {
+[data-mode="light"] .glass-section {
   background: rgba(255, 255, 255, 0.5);
   border-color: rgba(0, 0, 0, 0.06);
 }
 
-[data-theme="light"] .text-3d,
-[data-theme="light"] .text-3d-subtle {
+[data-mode="light"] .text-3d,
+[data-mode="light"] .text-3d-subtle {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="light"] .text-glow {
+[data-mode="light"] .text-glow {
   text-shadow: 0 0 10px rgba(122, 184, 42, 0.2);
 }
 
