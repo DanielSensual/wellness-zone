@@ -1,6 +1,6 @@
 "use server";
 
-import { intakeSchema, type IntakeFormData } from "@/lib/intake/schema";
+import { intakeSchema } from "@/lib/intake/schema";
 import { sendIntake } from "@/lib/intake/send";
 
 export type IntakeActionState = {
@@ -9,6 +9,11 @@ export type IntakeActionState = {
   calendlyUrl?: string;
   fieldErrors?: Record<string, string[]>;
 };
+
+function optionalString(value: FormDataEntryValue | null): string | undefined {
+  const text = String(value ?? "").trim();
+  return text || undefined;
+}
 
 export async function submitIntake(
   _prev: IntakeActionState,
@@ -20,9 +25,19 @@ export async function submitIntake(
     firstName: formData.get("firstName"),
     lastName: formData.get("lastName"),
     email: formData.get("email"),
-    phone: formData.get("phone") || undefined,
+    phone: formData.get("phone"),
+    consultType: formData.get("consultType"),
     bestTime: formData.get("bestTime"),
     interests,
+    mainGoal: formData.get("mainGoal"),
+    exerciseHistory: formData.get("exerciseHistory"),
+    injuries: optionalString(formData.get("injuries")),
+    daysPerWeek: formData.get("daysPerWeek"),
+    trainerBefore: formData.get("trainerBefore"),
+    biggestObstacle: optionalString(formData.get("biggestObstacle")),
+    nutritionInterest: formData.get("nutritionInterest"),
+    referralSource: optionalString(formData.get("referralSource")) || undefined,
+    additionalNotes: optionalString(formData.get("additionalNotes")),
     website: formData.get("website") || "",
   });
 
@@ -38,14 +53,7 @@ export async function submitIntake(
     return { ok: true, message: "Thank you! We'll be in touch soon." };
   }
 
-  const payload: IntakeFormData = {
-    firstName: parsed.data.firstName,
-    lastName: parsed.data.lastName,
-    email: parsed.data.email,
-    phone: parsed.data.phone,
-    bestTime: parsed.data.bestTime,
-    interests: parsed.data.interests,
-  };
+  const { website: _honeypot, ...payload } = parsed.data;
 
   try {
     const result = await sendIntake(payload);

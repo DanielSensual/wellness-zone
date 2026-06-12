@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { pillars } from "@/lib/content/pillars";
-import { pricingNote as pricing } from "@/lib/content/site";
-import { CTAButton } from "@/components/ui/CTAButton";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -11,7 +9,7 @@ import { cn } from "@/lib/utils/cn";
 
 export function Pillars() {
   return (
-    <section id="pillars" className="scroll-mt-20 bg-surface">
+    <section id="pillars" className="scroll-mt-20 bg-surface pb-16 sm:pb-24">
       <Container className="pt-16 sm:pt-24">
         <SectionHeading
           eyebrow="Our Approach"
@@ -68,7 +66,7 @@ export function Pillars() {
                       {pillar.description}
                     </p>
                     <Link
-                      href="/get-started"
+                      href="/#intake"
                       className="mt-8 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand transition-colors duration-300 hover:text-brand-light"
                     >
                       Learn more
@@ -81,22 +79,6 @@ export function Pillars() {
           );
         })}
       </div>
-
-      <Container className="pb-16 pt-16 sm:pb-24">
-        <Reveal>
-          <div className="glass-section rounded-2xl border-t-2 border-brand p-8 text-center sm:p-10">
-            <h3 className="font-display text-3d-subtle text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl">
-              {pricing.title}
-            </h3>
-            <p className="mx-auto mt-4 max-w-3xl text-foreground">
-              {pricing.body}
-            </p>
-            <div className="mt-8">
-              <CTAButton />
-            </div>
-          </div>
-        </Reveal>
-      </Container>
     </section>
   );
 }

@@ -75,6 +75,14 @@
   --surface: #ffffff;
   --surface-elevated: #f0f0f0;
   --border-subtle: rgba(0, 0, 0, 0.1);
+
+  /* Darken the brand for use as TEXT on light surfaces.
+     Lime #9fcc3e on white is only ~1.8:1 (fails WCAG AA);
+     #5a7d1e gives ~4.8:1 for body text while staying legibly
+     green as a button background (black-on-brand large text). */
+  --brand: #5a7d1e;
+  --brand-hover: #47611a;
+  --brand-light: #6f9527;
 }
 
 @theme inline {
@@ -123,6 +131,21 @@ body {
 
 [data-mode="light"] .text-white\/40 {
   color: rgba(26, 26, 26, 0.4) !important;
+}
+
+/* The transparent home header remains over dark video in light mode. */
+[data-mode="light"] header[data-transparent="true"] .text-white,
+[data-mode="light"] header[data-transparent="true"] .text-white\/80,
+[data-mode="light"] header[data-transparent="true"] .text-white\/70,
+[data-mode="light"] header[data-transparent="true"] .text-white\/60,
+[data-mode="light"] header[data-transparent="true"] .text-white\/40 {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+/* Hero subhead sits on the dark video overlay even in light mode,
+   so keep it the bright lime rather than the darkened text brand. */
+[data-mode="light"] .text-brand\/80 {
+  color: rgba(159, 204, 62, 0.85) !important;
 }
 
 /* Light mode: keep hero/header dark since they have image backgrounds */
@@ -424,7 +447,13 @@ body {
   }
 
   .hero-pulse,
-  .scroll-bounce {
+  .scroll-bounce,
+  .text-shimmer,
+  .animate-float {
+    animation: none;
+  }
+
+  .border-glow::before {
     animation: none;
   }
 }

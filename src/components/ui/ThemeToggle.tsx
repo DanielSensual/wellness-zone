@@ -15,22 +15,38 @@ const COLOR_THEMES = [
 type ColorTheme = (typeof COLOR_THEMES)[number]["id"];
 type Mode = "dark" | "light";
 
+const COLOR_THEME_IDS = new Set<ColorTheme>(COLOR_THEMES.map((theme) => theme.id));
+
+function isMode(value: string | null): value is Mode {
+  return value === "dark" || value === "light";
+}
+
+function isColorTheme(value: string | null): value is ColorTheme {
+  return Boolean(value && COLOR_THEME_IDS.has(value as ColorTheme));
+}
+
 export function ThemeToggle({ className }: { className?: string }) {
   const [mode, setMode] = useState<Mode>("dark");
   const [color, setColor] = useState<ColorTheme>("green");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const storedMode = localStorage.getItem("wz-mode") as Mode | null;
-    const storedColor = localStorage.getItem("wz-color") as ColorTheme | null;
-    if (storedMode) {
-      setMode(storedMode);
-      document.documentElement.setAttribute("data-mode", storedMode);
-    }
-    if (storedColor) {
-      setColor(storedColor);
-      document.documentElement.setAttribute("data-color", storedColor);
-    }
+    const frame = window.requestAnimationFrame(() => {
+      const storedMode = localStorage.getItem("wz-mode");
+      const storedColor = localStorage.getItem("wz-color");
+
+      if (isMode(storedMode)) {
+        setMode(storedMode);
+        document.documentElement.setAttribute("data-mode", storedMode);
+      }
+
+      if (isColorTheme(storedColor)) {
+        setColor(storedColor);
+        document.documentElement.setAttribute("data-color", storedColor);
+      }
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   const toggleMode = useCallback(() => {

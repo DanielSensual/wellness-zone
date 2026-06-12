@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { hero } from "@/lib/content/site";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { Container } from "@/components/ui/Container";

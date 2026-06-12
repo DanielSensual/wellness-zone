@@ -1,4 +1,11 @@
 import type { IntakePayload } from "./schema";
+import {
+  consultTypeLabels,
+  daysPerWeekLabels,
+  exerciseHistoryLabels,
+  referralLabels,
+  yesNoUnsureLabels,
+} from "./schema";
 import { pillarLabels } from "@/lib/content/pillars";
 
 const bestTimeLabels: Record<IntakePayload["bestTime"], string> = {
@@ -12,14 +19,49 @@ function formatPayload(payload: IntakePayload): string {
     .map((id) => pillarLabels[id])
     .join(", ");
 
-  return [
+  const lines = [
     `New consultation request from ${payload.firstName} ${payload.lastName}`,
     "",
+    "── Contact ──",
     `Email: ${payload.email}`,
-    `Phone: ${payload.phone || "Not provided"}`,
+    `Phone: ${payload.phone}`,
+    `Consultation type: ${consultTypeLabels[payload.consultType]}`,
     `Best time to reach: ${bestTimeLabels[payload.bestTime]}`,
+  ];
+
+  if (payload.referralSource) {
+    lines.push(`How they heard about us: ${referralLabels[payload.referralSource]}`);
+  }
+
+  lines.push(
+    "",
+    "── Goals & interests ──",
     `Interested in: ${interests}`,
-  ].join("\n");
+    `Main goal: ${payload.mainGoal}`,
+    `Nutrition guidance: ${yesNoUnsureLabels[payload.nutritionInterest]}`,
+  );
+
+  if (payload.biggestObstacle) {
+    lines.push(`Biggest obstacle: ${payload.biggestObstacle}`);
+  }
+
+  lines.push(
+    "",
+    "── Training background ──",
+    `Exercise history: ${exerciseHistoryLabels[payload.exerciseHistory]}`,
+    `Days per week available: ${daysPerWeekLabels[payload.daysPerWeek]}`,
+    `Worked with a trainer before: ${yesNoUnsureLabels[payload.trainerBefore]}`,
+  );
+
+  if (payload.injuries) {
+    lines.push(`Injuries / limitations: ${payload.injuries}`);
+  }
+
+  if (payload.additionalNotes) {
+    lines.push("", "── Additional notes ──", payload.additionalNotes);
+  }
+
+  return lines.join("\n");
 }
 
 async function sendViaResend(payload: IntakePayload): Promise<void> {

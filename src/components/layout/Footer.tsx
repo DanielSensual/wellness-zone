@@ -86,7 +86,7 @@ export function Footer() {
               </a>
             </div>
             <div className="mt-6 flex flex-wrap gap-4 text-sm">
-              <Link href="/get-started" className="text-white/80 hover:text-brand">
+              <Link href="/#intake" className="text-white/80 hover:text-brand">
                 Get Started
               </Link>
               <Link href="/#pillars" className="text-white/80 hover:text-brand">

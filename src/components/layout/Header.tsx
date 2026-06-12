@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/#team", label: "Team" },
   { href: "/#reviews", label: "Reviews" },
   { href: "/#location", label: "Location" },
+  { href: "/#intake", label: "Consult" },
 ];
 
 type HeaderProps = {
@@ -26,6 +27,7 @@ export function Header({ transparent = false }: HeaderProps) {
 
   return (
     <header
+      data-transparent={transparent ? "true" : undefined}
       className={cn(
         "left-0 right-0 top-0 z-50",
         transparent
@@ -38,10 +40,10 @@ export function Header({ transparent = false }: HeaderProps) {
           <Image
             src="/images/logo.png"
             alt={site.name}
-            width={140}
+            width={40}
             height={40}
             className={cn(
-              "h-8 w-auto sm:h-10",
+              "h-8 w-8 sm:h-10 sm:w-10",
               transparent ? "brightness-0 invert" : "",
             )}
             priority
@@ -55,21 +57,24 @@ export function Header({ transparent = false }: HeaderProps) {
               href={link.href}
               className={cn(
                 "text-sm font-medium transition-colors duration-300 hover:text-brand",
-                transparent ? "text-white/80" : "text-white/80",
+                transparent ? "text-[rgba(255,255,255,0.86)]" : "text-white/80",
               )}
             >
               {link.label}
             </Link>
           ))}
           <ThemeToggle />
-          <Button href="/get-started" size="sm">
+          <Button href="/#intake" size="sm">
             Free Consultation
           </Button>
         </nav>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md p-2 text-white md:hidden"
+          className={cn(
+            "inline-flex items-center justify-center rounded-md p-2 md:hidden",
+            transparent ? "text-[rgba(255,255,255,0.86)]" : "text-white",
+          )}
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -123,7 +128,7 @@ export function Header({ transparent = false }: HeaderProps) {
             <ThemeToggle />
             <span className="text-sm text-white/60">Theme</span>
           </div>
-          <Button href="/get-started" className="w-full">
+          <Button href="/#intake" className="w-full">
             Free Consultation
           </Button>
           <a href={contact.phoneHref} className="text-sm text-white/70">
